@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -34,7 +35,8 @@ public class Empresa implements Serializable {
 	}
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name = "empresa_seq", sequenceName = "empresa_id_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy=GenerationType.AUTO, generator="empresa_seq")
 	public Long getId() {
 		return id;
 	}

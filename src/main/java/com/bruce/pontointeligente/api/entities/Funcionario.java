@@ -19,6 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -48,7 +49,8 @@ private static final long serialVersionUID = -5754246207015712518L;
 	}
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name = "funcionario_seq", sequenceName = "funcionario_id_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy=GenerationType.AUTO, generator="funcionario_seq")
 	public Long getId() {
 		return id;
 	}
