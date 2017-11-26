@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -39,7 +40,8 @@ public class Lancamento {
 	}
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name = "lancamento_seq", sequenceName = "lancamento_id_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy=GenerationType.AUTO, generator="lancamento_seq")
 	public Long getId() {
 		return id;
 	}
